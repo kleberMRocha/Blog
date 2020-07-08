@@ -1,0 +1,30 @@
+<div class="p-5 m-5">
+   
+    <div class="card">
+
+          <div class="card-body">
+
+                <h1 class="card-header">{{titulo}}</h1>
+                    <p class="card-body">
+                    {{post}}  
+                    </p>
+               
+                    {{#if img}}
+                     <img src="/{{img}}" class="img-fluid" alt="{{img}}">
+                    {{/if}}
+              
+                <div>
+                    <span class="badge badge-primary">{{categoria}}</span>    
+                    <span class="badge badge-warning ">{{dataCriacao}}</span>
+
+                </div>
+              
+                {{#if user}}
+                     <a href="/editar/{{id}}" class="btn btn-warning mt-3">Editar</a>
+                {{/if}}
+
+          </div>
+
+    </div>
+
+</div>

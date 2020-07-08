@@ -1,0 +1,31 @@
+
+<div class="card text-center">
+    <h2>Novo Post</h2>
+    {{#if error}}
+
+     <div class="alert alert-danger">{{error}}</div>
+
+    {{/if}}
+ 
+<form action="/novoPost" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="titulo">Titulo</label>
+    <input type="text" class="form-control" id="titulo" name="titulo" maxlength="199" placeholder="Titulo do Post">
+  </div>
+  <div class="form-group">
+    <label for="img">Imagem</label>
+    <input type="file"  class="form-control pb-5" id="img" name="postImg"  placeholder="imagem do post">
+  </div>
+
+  <div class="form-group">
+    <label for="post">Post</label>
+    <textarea class="form-control" name="post" id="post" rows="15"></textarea>
+  </div>
+   <div class="form-group">
+    <label for="categoria">Categoria</label>
+    <input type="text" class="form-control" id="categoria" name="categoria" maxlength="20" placeholder="Categoria">
+  </div>
+  <button class="btn btn-success postar">Postar</button>
+</form>
+
+</div>

@@ -1,0 +1,66 @@
+  <div id="carouselExampleControls" class="carousel slide sliderMain" data-ride="carousel">
+        <div class="carousel-inner">
+
+             {{#each post}}
+        
+                <div class="carousel-item" data-slides>
+                    <img class="d-block w-100 img-fluid slideS" src="{{img}}"   alt="{{id}} slide">
+                    <div class="carousel-caption">
+                        <h4> {{titulo}}</h4>
+                        <p>
+                         {{post}}
+                        </p>
+                        <a href="post/{{id}}" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            
+            {{/each}}
+          
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+  </div>
+  <dir class="container">
+      <h1>Postagens</h1>
+
+    <div class="posts">
+
+        {{#each post}}
+
+            <div class="border text-center newP">
+                <img src="{{img}}" class="img-fluid" alt="">
+                <div class="card-header">
+                    {{titulo}}
+                </div>
+                <div class="card-body">
+                    <a href="/post/{{id}}" class="btn btn-primary mb-3">Continue lendo</a>
+                </div>
+            </div>
+
+            
+        {{/each}}
+
+
+    </div>
+
+  </dir>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center sobre">
+        <h3>Sobre</h3>
+        <p>
+            Um blog de variedades, Natureza, informações diversas
+            Após a leitura, os visitantes poderiam dar seu feedback nos comentarios!
+        </p>
+        </div>
+        <div class="parallax-window col-md-6" data-parallax="scroll" data-image-src="/img/blog.jpg">
+        </div>
+    </div>
+
+</div>

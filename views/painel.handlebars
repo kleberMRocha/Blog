@@ -1,0 +1,34 @@
+
+{{#if user}}
+
+
+<div class="card text-center painel">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="/novoPost"><i class="far fa-plus-square"></i> Novo Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ultimos">Ultimos Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/gerenciar">Gerenciar Posts</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="/cadastro"><i class="fas fa-plus"></i> Novo usuário</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">Bem Vindo</h2>
+    <h3>{{user}}</h3>
+   
+  </div>
+</div>
+
+
+
+{{/if}}
+
+
+

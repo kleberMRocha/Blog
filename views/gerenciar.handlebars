@@ -1,0 +1,37 @@
+
+    
+
+  {{#each posts}}
+
+  <div class="gerenciar">
+
+          <div class="card-body">
+              <div>
+                 
+             
+                    <h3 class="card-header"> #{{id}} - {{titulo}}</h3>
+              </div>  
+
+        
+                <div class="previa">
+                    {{post}}
+                </div>
+              
+
+                <a class="btn btn-success mt-3"     href="/post/{{id}}"> Leia mais</a>
+                <a class="btn btn-warning mt-3"     href="/editar/{{id}}"> Editar</a>  
+                <a class="btn btn-danger ml-3 mt-3" href="/gerenciar/post/{{id}}"
+                onclick="return confirm('Certeza que deseja deletar o item?')"> Apagar</a> 
+
+                  <div class="mt-5">
+                    <span class="badge badge-primary"> {{categoria}}</span>    
+                    <span class="badge badge-warning ">{{dataCriacao}}</span>
+
+                </div>   
+              
+
+          </div>
+
+    </div>
+
+ {{/each }}

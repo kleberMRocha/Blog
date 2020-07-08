@@ -1,0 +1,40 @@
+
+  {{#each post}}
+
+  <div class="card">
+
+          <div class="card-body">
+
+                <h1 class="card-header">{{titulo}}</h1>
+                <p class="card-body">
+                      {{post}}
+                  </p>
+        
+                <span class="badge">{{data}}</span>
+                <div>
+                    <span class="badge badge-primary"> {{categoria}}</span>    
+                    <span class="badge badge-warning ">{{dataCriacao}}</span>
+
+                </div>
+
+                <a class="btn btn-success mt-3" href="/post/{{id}}"> Leia mais</a>  
+              
+
+          </div>
+
+    </div>
+          
+  {{/each}}
+
+
+
+
+
+
+
+
+
+  
+
+
+

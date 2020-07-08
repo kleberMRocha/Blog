@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/703a4c0f87.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Blog</title>
+</head>
+<body>
+ <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#menu" 
+                aria-controls="menu" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+        {{#if user}}
+            <ul class="navbar-nav ml-auto pr-1">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/painel"> <i class="fa fa-tachometer" aria-hidden="true"></i> Painel</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/novoPost">Novo Post</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/cadastro">Cadastrar Novo User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+    
+            </ul>
+            {{else}}
+                <ul class="navbar-nav ml-auto pr-1">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ultimos">Ultimos Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+        
+                </ul>
+
+            {{/if }}
+        <form  action="/searchPost" method="POST" class="form-inline my-2 my-lg-0">
+        <input class="form-control search" name="search" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-primary my-2 my-sm-0 search" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+        </form>
+    </div>
+    </nav>
+ </header>
+        
+
+    {{{body}}}
+
+<script src="/js/static.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="/css/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/parallax.js-1.5.0/parallax.min.js"></script>
+
+
+<footer class="container-fluid">
+
+    0101
+    2020 - tanana
+
+
+</footer>
+</body>
+</html>
