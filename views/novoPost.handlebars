@@ -1,13 +1,13 @@
 
 <div class="card text-center">
-    <h2>Novo Post</h2>
+    <h3 class="display-4">Novo Post</h3>
     {{#if error}}
 
      <div class="alert alert-danger">{{error}}</div>
 
     {{/if}}
  
-<form action="/novoPost" method="POST" enctype="multipart/form-data">
+<form action="/painel/novoPost" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="titulo">Titulo</label>
     <input type="text" class="form-control" id="titulo" name="titulo" maxlength="199" placeholder="Titulo do Post">

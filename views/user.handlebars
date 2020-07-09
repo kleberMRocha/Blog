@@ -1,6 +1,6 @@
 
 
-{{#each user}}
+{{#each users}}
 
 
 <div class="card" style="width: 20rem; ">
@@ -10,7 +10,7 @@
   <ul class="list-group list-group-flush">
      <li class="list-group-item text-center">
          <a href="user/{{id}}" class=" btn btn-warning m-2">Alterar Senha</a>
-         <a href="deleta/{{id}}" onclick="return confirm('Certeza que deseja deletar o item?')"
+         <a href="/painel/deleta/{{id}}" onclick="return confirm('Certeza que deseja deletar o item?')"
          class=" btn btn-danger">Apagar</a>
       </li>
   </ul>
