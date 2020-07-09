@@ -10,8 +10,8 @@
 </head>
 <body>
  <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Blog</a>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-nav">
+            <a class="navbar-brand" href="/">Blog <i class="fa fa-paw" aria-hidden="true"></i> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#menu" 
                 aria-controls="menu" 
@@ -24,7 +24,7 @@
 
         {{#if user}}
             <ul class="navbar-nav ml-auto pr-1">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -43,14 +43,14 @@
             </ul>
             {{else}}
                 <ul class="navbar-nav ml-auto pr-1">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ultimos">Ultimos Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="btn btn-success btn-login" href="/login">Login</a>
                 </li>
         
                 </ul>
@@ -58,7 +58,7 @@
             {{/if }}
         <form  action="/searchPost" method="POST" class="form-inline my-2 my-lg-0">
         <input class="form-control search" name="search" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0 search" type="submit">
+        <button class="btn btn-success my-2 my-sm-0 search buscar"  type="submit">
             <i class="fas fa-search"></i>
         </button>
         </form>
@@ -76,10 +76,11 @@
 <script src="/js/parallax.js-1.5.0/parallax.min.js"></script>
 
 
-<footer class="container-fluid">
+<footer class="container-fluid bg-nav">
 
-    0101
-    2020 - tanana
+  <p>2020 -
+ <a href=" https://github.com/kleberMRocha" target="_blank" >GITHUB <i class="fa fa-github-alt" aria-hidden="true"></i></a> 
+  <p>
 
 
 </footer>

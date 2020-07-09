@@ -9,15 +9,12 @@ const cookieParser = require('cookie-parser');
 
 module.exports = (() =>{
 
-    
-    
+
     const app = express();
     app.use(express.static('src'));
     app.use(express.static('uploads'));
     app.use(gzip());
 
-  
-    
     //Handlebars
     app.engine('handlebars', handlebars());
     app.set('view engine', 'handlebars');

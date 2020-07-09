@@ -5,13 +5,18 @@
      <div class="alert alert-danger">{{error}}</div>
 
     {{/if}}
-<form action="/atualizar" method="POST">
+<form action="/atualizar" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="titulo">Titulo</label>
     <input type="hidden" name="id" value="{{id}}">
     <input type="text" class="form-control" value="{{titulo}}" id="titulo" name="titulo" maxlength="199" placeholder="Titulo do Post">
   </div>
 
+<div class="form-group">
+  
+    <label for="img" class="badge badge-warning ">Alterar Imagem</label>
+    <input type="file" value="{{{img}}}" class="form-control pb-5" id="img" name="postImg" placeholder="imagem do post">
+  </div>
 
   <div class="form-group">
     <label for="post">Post</label>

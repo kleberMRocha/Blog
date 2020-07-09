@@ -115,6 +115,255 @@ class Blog{
 
           
     }
+    gerenciarUser(req,res){
+
+       let listaUser = (req,res)=>{
+           let sql = 'select * from login';
+            this.conexao.query(sql,(err,resposta)=>{
+                if(err)return console.log(err);
+                if(resposta){
+                    res.render('user',{user:resposta})
+                }
+            })
+
+       } 
+
+     const jsToken = require('jsonwebtoken');
+
+      if(!req.headers.cookie){
+          return res.status(401).redirect('/');
+      }
+
+      let [name,token]= req.headers.cookie.split('=');
+   
+      if(name != 'blogLogin'){
+         return res.status(401).redirect('/');
+      }
+
+
+        let decoded = jsToken.decode(token);
+        // get the decoded payload 
+        try {
+
+            decoded = jsToken.decode(token, {complete: true});
+
+            this.conexao.query('SELECT * FROM login where id =?',decoded.payload.id[0],
+                
+            async (err,resposta) =>{
+                if(err) return console.log(err);
+                if(resposta){
+                    return await listaUser(req,res);
+                }else{
+                    res.redirect('/');
+                }
+
+            });
+            
+        } 
+        catch (error) {
+
+            res.redirect('/');
+            
+        }
+
+       
+
+          
+    }
+    editarUser(req,res){
+
+        let formEdit = (req,res,user) =>{
+            
+            let sql = `select * from login where id = ${req.params.id}`;
+            this.conexao.query(sql,async(err,resposta)=>{
+
+                 return await  res.render('editaUser',{
+                    user:user,
+                    login:resposta[0].login,
+                    id:resposta[0].id});
+            });
+        }
+
+    const jsToken = require('jsonwebtoken');
+
+      if(!req.headers.cookie){
+          return res.status(401).redirect('/');
+      }
+
+      let [name,token]= req.headers.cookie.split('=');
+   
+      if(name != 'blogLogin'){
+         return res.status(401).redirect('/');
+      }
+
+
+        let decoded = jsToken.decode(token);
+        // get the decoded payload 
+        try {
+
+            decoded = jsToken.decode(token, {complete: true});
+
+            this.conexao.query('SELECT * FROM login where id =?',decoded.payload.id[0],
+                
+            async (err,resposta) =>{
+                if(err) return console.log(err);
+                if(resposta){
+                    formEdit(req,res,decoded.payload.id[0])
+                  
+                }else{
+                    res.redirect('/');
+                }
+
+            });
+            
+        } 
+        catch (error) {
+
+            res.redirect('/');
+            
+        }
+
+
+
+
+    }
+    altualizaUser(req,res){
+
+        let atualiza = (req,res,user) =>{
+            const bcrypt = require('bcryptjs');
+
+            if(req.body.senha == '' ||req.body.Csenha == '' ){
+                        
+                        res.render('editaUser',{error:'Campos em branco',login:req.body.login,user:user});
+                        return;
+            }
+
+            if(req.body.senha !=  req.body.Csenha  ){
+             
+                res.render('editaUser',{error:'Campos Senhas Não Batem',login:req.body.login, user:user});
+                return;
+            }else{
+
+                let senhaHash = bcrypt.hash(req.body.senha,2);
+
+                senhaHash.then(senha => {
+ 
+                let sql = `UPDATE login SET senha=? WHERE login=?;`;
+           
+                this.conexao.query(sql,[senha,req.body.login],
+                    (err,resposta)=>{
+                        if(err)err && console.log(err) 
+                        res.render('editaUser',{success:'senha alterada',login:req.body.login,user:user});
+                    
+            });
+                
+ 
+        });
+ 
+               
+
+            }
+
+        }
+
+     const jsToken = require('jsonwebtoken');
+
+      if(!req.headers.cookie){
+          return res.status(401).redirect('/');
+      }
+
+      let [name,token]= req.headers.cookie.split('=');
+   
+        if(name != 'blogLogin'){
+            return res.status(401).redirect('/');
+        }
+
+
+        let decoded = jsToken.decode(token);
+        // get the decoded payload 
+        try {
+
+            decoded = jsToken.decode(token, {complete: true});
+
+            this.conexao.query('SELECT * FROM login where id =?',decoded.payload.id[0],
+                
+            async (err,resposta) =>{
+                if(err) return console.log(err);
+                if(resposta){
+                    return await atualiza(req,res,decoded.payload.id[0]);
+                }else{
+                    res.redirect('/');
+                }
+
+            });
+            
+        } 
+        catch (error) {
+
+            res.redirect('/');
+            
+        }
+
+
+
+
+    }
+    deletaUser(req,res){
+
+        let deleta = (req,res) =>{
+            let sql = 'delete from login where id = ?'
+            this.conexao.query(sql,req.params.id,(err,resposta)=>{
+                if(err){return console.log(err)}
+                else{
+                    res.redirect('/user');
+                }
+                
+            })
+            
+        }
+            
+    
+
+     const jsToken = require('jsonwebtoken');
+
+      if(!req.headers.cookie){
+          return res.status(401).redirect('/');
+      }
+
+      let [name,token]= req.headers.cookie.split('=');
+   
+        if(name != 'blogLogin'){
+            return res.status(401).redirect('/');
+      }
+
+
+        let decoded = jsToken.decode(token);
+        // get the decoded payload 
+        try {
+
+            decoded = jsToken.decode(token, {complete: true});
+
+            this.conexao.query('SELECT * FROM login where id =?',decoded.payload.id[0],
+                
+            async (err,resposta) =>{
+                if(err) return console.log(err);
+                if(resposta){
+                    return await deleta(req,res);
+                }else{
+                    res.redirect('/');
+                }
+
+            });
+            
+        } 
+        catch (error) {
+
+            res.redirect('/');
+            
+        }
+       
+
+    }
     loginAuth(req,res){
      const bcrypt = require('bcryptjs');
      const jsToken = require('jsonwebtoken');

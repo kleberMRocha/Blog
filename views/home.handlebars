@@ -6,11 +6,11 @@
                 <div class="carousel-item" data-slides>
                     <img class="d-block w-100 img-fluid slideS" src="{{img}}"   alt="{{id}} slide">
                     <div class="carousel-caption">
-                        <h4> {{titulo}}</h4>
-                        <p>
+                        <h4 class="display-4"> {{titulo}}</h4>
+                        <p class="previa">
                          {{post}}
                         </p>
-                        <a href="post/{{id}}" class="btn btn-primary">Saiba Mais</a>
+                        <a href="post/{{id}}" class="btn btn-success">Saiba Mais</a>
                     </div>
                 </div>
             
@@ -27,7 +27,7 @@
         </a>
   </div>
   <dir class="container">
-      <h1>Postagens</h1>
+      <h1 class="text-center"> <i class="fa fa-paw" aria-hidden="true"></i> Postagens</h1>
 
     <div class="posts">
 
@@ -39,7 +39,7 @@
                     {{titulo}}
                 </div>
                 <div class="card-body">
-                    <a href="/post/{{id}}" class="btn btn-primary mb-3">Continue lendo</a>
+                    <a href="/post/{{id}}" class="btn btn-success mb-3">Continue lendo</a>
                 </div>
             </div>
 
@@ -63,4 +63,23 @@
         </div>
     </div>
 
+</div>
+<div class="container-fluid newsletter">
+   <h2 class="text-center ">
+        Newsletter
+   </h2>
+
+
+<div class="input-group mb-3 newsletterForm">
+ 
+  <div class="input-group-prepend">
+         <form action="">
+            <button class="btn btn-outline-success pl-5 pr-5" type="button">Enviar</button>
+            </div>
+            <input type="email" class="form-control" 
+            placeholder="Deixe seu E-mail para receber Novidades" aria-label="" 
+            aria-describedby="basic-addon1">
+        </form>   
+   </div>
+ 
 </div>
