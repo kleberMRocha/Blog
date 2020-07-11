@@ -55,8 +55,7 @@
         <div class="col-md-6 text-center sobre">
         <h3>Sobre</h3>
         <p>
-            Um blog de variedades, Natureza, informações diversas
-            Após a leitura, os visitantes poderiam dar seu feedback nos comentarios!
+            Um blog Com NodeJs e Mysql.
         </p>
         </div>
         <div class="parallax-window col-md-6" data-parallax="scroll" data-image-src="/img/blog.jpg">
@@ -70,18 +69,38 @@
         Newsletter
    </h2>
 
-
 <div class="input-group mb-3 newsletterForm">
- 
+    
+    
   <div class="input-group-prepend">
-         <form action="">
-            <button class="btn btn-outline-success pl-5 pr-5" type="button">Enviar</button>
+
+                 <form action="/" method="POST">
+ 
+          <button class="btn btn-outline-success pl-5 pr-5 " id="newsletter" type="submit">Enviar</button>
+        
             </div>
-            <input type="email" class="form-control" 
+            <input type="email" name='email'  
+            {{#if error}} autofocus {{/if}} 
+            {{#if success}} autofocus {{/if}} 
+            class="form-control" 
             placeholder="Deixe seu E-mail para receber Novidades" aria-label="" 
-            aria-describedby="basic-addon1">
-        </form>   
+            aria-describedby="basic-addon1" required>
+        </form> 
+          
    </div>
+
+    <div style="width: 50%; margin:auto;">
+        
+        {{#if error}}
+        <div class="alert alert-warning text-center">{{error}}</div>
+        {{/if}}
+        {{#if success}}
+        <div class="alert alert-success text-center">{{success}}</div>
+        {{/if}}
+        
+        
+    </div>
+ 
  
 </div>
 

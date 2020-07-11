@@ -19,6 +19,7 @@ module.exports = (app) =>{
     //validação de rotas Publicas
     app.use((req,res,next)=>{Blog.validaLogin(req,res,next)});
     app.get('/',(req,res)=>{Post.listar(req,res,'home')});
+    app.post('/',(req,res)=>{Blog.CadastraNewsletter(req,res)})
     //busca Post Pelo texto 
     app.post('/searchPost',(req,res)=>{Post.searchPost(req,res)});
     //mostra os ultimos Posts
@@ -30,8 +31,7 @@ module.exports = (app) =>{
     app.get('/post/:id',(req,res)=>{Post.showPost(req,res,'post')});
     //limpa os cookie
     app.get('/logout',(req,res)=>{res.clearCookie('blogLogin');res.redirect('/')});
-    
-    //--------------------------------------------------------------------------//
+
 
     //privadas
     app.use('/painel',(req,res,next)=>{Blog.validaAdm(req,res,next)});
@@ -57,7 +57,7 @@ module.exports = (app) =>{
     app.post('/painel/novoPost',upload.single('postImg'),(req,res)=>{ Post.newPost(req,res)});
     //visualiza o post apos concluido
     app.get ('/painel/novoPost',(req,res)=>{res.render('novoPost')});
-    
+
     //404
     app.get('*',(req,res,next)=>{res.status('404').render('404')});
 

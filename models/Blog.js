@@ -1,9 +1,12 @@
+const Post = require('./Post');
+
 class Blog{
     init(conexao){
         this.conexao = conexao;
         this.createTableLogin();
         this.createAdmin();
         this.createTablePost();
+        this.createTableNewsletter()
         
     }
     createTableLogin(){
@@ -67,6 +70,18 @@ class Blog{
 
         this.conexao.query(sql,(err,res)=> err && console.log(err) 
         || res && console.log('Tabela Post Criada!'));   
+    }
+    createTableNewsletter(){
+        const sql = `create table if not exists newsletter(
+            id int not null auto_increment,
+            email varchar(150) not null,
+            primary key(id,email)
+            );`
+
+          
+        this.conexao.query(sql,(err,res)=> err && console.log(err) 
+        || res && console.log('Tabela Newsletter Criada'));   
+        
     }
     cadastroUser(userInfo,res){
         const bcrypt = require('bcryptjs');
@@ -218,6 +233,48 @@ class Blog{
        
 
     }
+    CadastraNewsletter(req,res){
+
+    let email = req.body.email;
+  
+    let sql = 'select * from newsletter where email = ?';
+    let sql2 = `INSERT INTO newsletter (email) VALUES (?)`;
+
+    this.conexao.query(sql,email,(err,resposta)=>{
+        if(err)return console.log(err);
+        if(resposta.length != 0){
+
+            let sql = 'select * from post order by id desc limit 5 ;'
+            this.conexao.query(sql,(err,posts)=>{
+                if(err)console.log(err);
+                else{
+                  return  res.render('home',{post:posts,error:'E-mail já cadastrado!'})
+                }
+    
+        });
+
+         
+        }else{
+
+            this.conexao.query(sql2,email, async(err,resposta)=>{
+                if(err)return await console.log(err);
+                if(resposta){
+    
+                    let sql = 'select * from post order by id desc limit 5 ;'
+                    this.conexao.query(sql,(err,posts)=>{
+                        if(err)console.log(err);
+                        else{
+                            res.render('home',{post:posts,success:'Obrigado'})
+                        }
+            
+                    });
+                }
+            });    
+        }  
+    })    
+    
+        
+    }
     loginAuth(req,res){
      const bcrypt = require('bcryptjs');
      const jsToken = require('jsonwebtoken');
@@ -259,7 +316,6 @@ class Blog{
     isAuthenticated(req,res,rota){
         res.locals.user ? res.redirect('/') : res.render(rota,{layout:false});  
     }
-
     //validação paginas comuns
     validaLogin(req,res,next){
         const jsToken = require('jsonwebtoken');
@@ -314,9 +370,7 @@ class Blog{
           }
     }
 
-    
-    
-     
+ 
 }
                     
 module.exports = new Blog;

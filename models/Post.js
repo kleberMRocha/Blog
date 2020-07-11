@@ -1,7 +1,6 @@
 class Post {
     constructor(){
         this.conexao = require('../infra/mysql');
-        
     }
     converteData(posts){
         const moment = require('moment');
@@ -54,6 +53,7 @@ class Post {
 
     }
     listar(req,res,rota){
+        
         let sql = 'select * from post order by id desc limit 5 ;'
         this.conexao.query(sql,(err,posts)=>{
             if(err)console.log(err);
