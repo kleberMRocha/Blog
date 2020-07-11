@@ -4,7 +4,7 @@
 ![](src/screenshot/screencapture-localhost-4000-2020-07-11-08_22_32.png)
 
 
- ###Instalação Local
+### Instalação Local
 Pré-requisitos
 
 
@@ -12,7 +12,7 @@ Pré-requisitos
 - Banco de dados Mysql;
 
 
-###Instalação
+### Instalação
 1. Faça login no mysql e crie uma base de dados com o nome 'blog';
 2. Faça o clone do repositório e navegue até a pasta 'infra';
 3. Edite o arquivo Mysql.js com os dados da sua conexão Mysql;
