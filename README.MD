@@ -4,7 +4,7 @@
 ![](src/screenshot/screencapture-localhost-4000-2020-07-11-08_22_32.png)
 
 
-### Instalação Local
+### :rocket: Instalação Local
 Pré-requisitos
 
 
